@@ -25,7 +25,8 @@
 		<tr>
 			<td>${cl.classCode}</td>
 			<td>${cl.instructorCode}</td>
-			<td><a href="/lecture/LecListAction.le">${cl.className}</a></td>
+			
+			<td><a href="<c:url value="/lecture/LecListAction.le"/>?classCode=${cl.classCode}">${cl.className}</a></td>
 			<td>${cl.classLevel}</td>
 			<td>${cl.classCategory}</td>
 			<td>${cl.classPeoriod}</td>

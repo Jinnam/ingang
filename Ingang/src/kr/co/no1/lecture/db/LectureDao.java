@@ -15,9 +15,11 @@ public class LectureDao {
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
-	ArrayList<Classes> list;
+	ArrayList<Classes> classList;
+	ArrayList<Lecture> lectureList;
 	Classes cl;
-
+	
+	//생성자 메서드
 	public LectureDao() {
 		System.out.println("---생성자메서드 LectureDao---");
 		try {
@@ -30,11 +32,12 @@ public class LectureDao {
 			return;
 		}
 	}
-
+	
+	//전체 과정 리스트 가져오는 메서드
 	public ArrayList<Classes> classList() throws ClassNotFoundException, SQLException {
-		System.out.println("01 전class 조회 메서드 선언 LectureDao.java");
-		list = new ArrayList<Classes>();
-		System.out.println(list + "<-- alm 111");
+		System.out.println("01 전class 조회 메서드 진입 LectureDao.java");
+		classList = new ArrayList<Classes>();
+		System.out.println(classList + "<-- classList");
 		conn = ds.getConnection();
 
 		pstmt = conn.prepareStatement("select * from class");
@@ -56,11 +59,38 @@ public class LectureDao {
 			cl.setSoldAmount(rs.getInt("sold_amount"));
 			cl.setGradeAverage(rs.getFloat("grade_average"));
 			
-			list.add(cl); // ArrayList객체내에 Member객체 주소값을 index 0번 부터 추가
-			System.out.println(list + "<-- alm 222");
+			classList.add(cl); // ArrayList객체내에 Member객체 주소값을 index 0번 부터 추가
+			System.out.println(classList + "<-- alm 222");
 		}
 		close();
-		return list;
+		return classList;
+	}
+	
+	//하나의 과정에 따른 강의 리스트 조회 메서드
+	public ArrayList<Lecture> oneClassLectures(String classCode) throws ClassNotFoundException, SQLException {
+		System.out.println("02 하나의 클래스에 해당되는 강의들 조회 메서드 진입 LectureDao.java");
+		lectureList = new ArrayList<Lecture>();
+		System.out.println("lectureList : "+lectureList);
+		conn = ds.getConnection();
+
+		pstmt = conn.prepareStatement("select * from lecture where class_code=?");
+		pstmt.setString(1, classCode);
+		rs = pstmt.executeQuery();
+		Lecture le = null;
+		while (rs.next()) {
+			le = new Lecture();
+			le.setLectureCode(rs.getString("lecture_code"));
+			le.setClassCode(rs.getString("class_code"));
+			le.setLectureName(rs.getString("lecture_name"));
+			le.setLectureDetail(rs.getString("lecture_detail"));
+			le.setLectureFile(rs.getString("lecture_file"));
+			le.setLectureRd(rs.getString("lecture_rd"));
+			
+			lectureList.add(le); // ArrayList객체내에 Member객체 주소값을 index 0번 부터 추가
+		}
+		System.out.println("lectureList : "+lectureList);
+		close();
+		return lectureList;
 	}
 	
 	public void close(){

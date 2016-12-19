@@ -36,7 +36,7 @@ public class LectureController extends HttpServlet {
 		ActionForward forward = null;
 		Action action = null;
 		
-		//회원리스트
+		//과정 리스트
 		if(command.equals("/lecture/ClassListAction.le")){
 			System.out.println("조건문 /lecture/ClassListActin.le 과정리스트");
 			action = new LectureClassListAction();
@@ -45,6 +45,8 @@ public class LectureController extends HttpServlet {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+			
+		//강의 리스트
 		}else if(command.equals("/lecture/LecListAction.le")){
 			System.out.println("조건문 /lecture/LecListAction.le 과정리스트");
 			action = new LectureLecListAction();
