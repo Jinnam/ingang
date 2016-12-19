@@ -32,7 +32,7 @@ public class LectureDao {
 	}
 
 	public ArrayList<Classes> classList() throws ClassNotFoundException, SQLException {
-		System.out.println("05 전체회원 조회 메서드 선언 Mdao.java");
+		System.out.println("01 전class 조회 메서드 선언 LectureDao.java");
 		list = new ArrayList<Classes>();
 		System.out.println(list + "<-- alm 111");
 		conn = ds.getConnection();

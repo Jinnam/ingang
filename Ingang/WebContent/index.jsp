@@ -15,7 +15,7 @@
 <a href="<c:url value='/member1/member/InsertForm.no1'/>">3.회원가입</a>
 <a href="">4.결제내역</a>
 <a href="">5.회원정보</a>
-<a href="<c:url value='/lecture/ClassListAction.no1.le'/>">6.수강신청</a>
+<a href="<c:url value='/lecture/ClassListAction.le'/>">6.수강신청</a>
 <a href="">7.강사소개</a>
 <a href="">8.내강의실</a>
 

@@ -8,16 +8,32 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>강의 리스트</h1>
+<table border='1'>
+	<tr>
+		<th>강의코드</th>
+		<th>강사코드</th>
+		<th>강의명</th>
+		<th>강의등급</th>
+		<th>카테고리</th>
+		<th>기간</th>
+		<th>가격</th>
+		<th>할인율</th>
+		<th>강의 수</th>
+	</tr>
 	<c:forEach items="${list}" var="cl">
-		${cl.classCode}/
-		${cl.instructorCode}/
-		${cl.className}/
-		${cl.classLevel}/
-		${cl.classCategory}/
-		${cl.classPeoriod}/
-		${cl.classPrice}/
-		${cl.discount}/
-		${cl.classNumber}/
+		<tr>
+			<td>${cl.classCode}</td>
+			<td>${cl.instructorCode}</td>
+			<td><a href="/lecture/LecListAction.le">${cl.className}</a></td>
+			<td>${cl.classLevel}</td>
+			<td>${cl.classCategory}</td>
+			<td>${cl.classPeoriod}</td>
+			<td>${cl.classPrice}</td>
+			<td>${cl.discount}</td>
+			<td>${cl.classNumber}</td>
+		</tr>
 	</c:forEach>
+</table>
 </body>
 </html>
