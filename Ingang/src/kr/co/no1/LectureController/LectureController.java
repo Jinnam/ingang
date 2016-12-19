@@ -36,7 +36,7 @@ public class LectureController extends HttpServlet {
 		ActionForward forward = null;
 		Action action = null;
 		
-		//회원리스트
+		//과정 리스트
 		if(command.equals("/lecture/ClassListAction.le")){
 			System.out.println("조건문 /lecture/ClassListActin.le 과정리스트");
 			action = new LectureClassListAction();
@@ -45,9 +45,27 @@ public class LectureController extends HttpServlet {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+			
+		//강의 리스트
 		}else if(command.equals("/lecture/LecListAction.le")){
-			System.out.println("조건문 /lecture/LecListAction.le 과정리스트");
+			System.out.println("조건문 /lecture/LecListAction.le 강의리스트");
 			action = new LectureLecListAction();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		
+		//강의 등록 폼
+		}else if(command.equals("/lecture/LectureInsertForm.le")){
+			System.out.println("조건문 /lecture/LectureInsertForm.le 강의추가");
+			forward = new ActionForward();
+			forward.setPath("/WEB-INF/lecture/lectureInsertForm.jsp");
+			
+		//강의 등록 실행
+		}else if(command.equals("/lecture/LectureInsertAction.le")){
+			System.out.println("조건문 /lecture/LectureInsertAction.le 강의리스트");
+			action = new LectureInsertAction();
 			try{
 				forward=action.execute(request, response);
 			}catch(Exception e){
@@ -63,7 +81,7 @@ public class LectureController extends HttpServlet {
 			}else{
 				RequestDispatcher dispatcher=
 						request.getRequestDispatcher(forward.getPath());
-				System.out.println(forward.getPath() + "<--- mforward.getPath()[jsp 이동경로]");
+				System.out.println(forward.getPath() + "<--- forward.getPath()[jsp 이동경로]");
 				System.out.println();
 				dispatcher.forward(request, response);
 			}
