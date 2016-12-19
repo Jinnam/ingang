@@ -57,8 +57,8 @@ public class LectureDao {
 			cl.setGradeAverage(rs.getFloat("grade_average"));
 			
 			classList.add(cl); // ArrayList객체내에 Member객체 주소값을 index 0번 부터 추가
-			System.out.println(classList + "<-- classList");
 		}
+		System.out.println(classList + "<-- classList");
 		close();
 		return classList;
 	}

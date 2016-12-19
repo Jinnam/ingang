@@ -48,8 +48,24 @@ public class LectureController extends HttpServlet {
 			
 		//강의 리스트
 		}else if(command.equals("/lecture/LecListAction.le")){
-			System.out.println("조건문 /lecture/LecListAction.le 과정리스트");
+			System.out.println("조건문 /lecture/LecListAction.le 강의리스트");
 			action = new LectureLecListAction();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		
+		//강의 등록 폼
+		}else if(command.equals("/lecture/LectureInsertForm.le")){
+			System.out.println("조건문 /lecture/LectureInsertForm.le 강의추가");
+			forward = new ActionForward();
+			forward.setPath("/WEB-INF/lecture/lectureInsertForm.jsp");
+			
+		//강의 등록 실행
+		}else if(command.equals("/lecture/LectureInsertAction.le")){
+			System.out.println("조건문 /lecture/LectureInsertAction.le 강의리스트");
+			action = new LectureInsertAction();
 			try{
 				forward=action.execute(request, response);
 			}catch(Exception e){
