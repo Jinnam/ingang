@@ -15,9 +15,6 @@ public class LectureDao {
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
-	ArrayList<Classes> classList;
-	ArrayList<Lecture> lectureList;
-	Classes cl;
 	
 	//생성자 메서드
 	public LectureDao() {
@@ -36,14 +33,14 @@ public class LectureDao {
 	//전체 과정 리스트 가져오는 메서드
 	public ArrayList<Classes> classList() throws ClassNotFoundException, SQLException {
 		System.out.println("01 전class 조회 메서드 진입 LectureDao.java");
-		classList = new ArrayList<Classes>();
+		ArrayList<Classes> classList = new ArrayList<Classes>();
 		System.out.println(classList + "<-- classList");
 		conn = ds.getConnection();
 
 		pstmt = conn.prepareStatement("select * from class");
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
-			cl = new Classes();
+			Classes cl = new Classes();
 			cl.setClassCode(rs.getString("class_code"));
 			cl.setInstructorCode(rs.getString("instructor_code"));
 			cl.setClassName(rs.getString("class_name"));
@@ -60,7 +57,7 @@ public class LectureDao {
 			cl.setGradeAverage(rs.getFloat("grade_average"));
 			
 			classList.add(cl); // ArrayList객체내에 Member객체 주소값을 index 0번 부터 추가
-			System.out.println(classList + "<-- alm 222");
+			System.out.println(classList + "<-- classList");
 		}
 		close();
 		return classList;
@@ -69,7 +66,7 @@ public class LectureDao {
 	//하나의 과정에 따른 강의 리스트 조회 메서드
 	public ArrayList<Lecture> oneClassLectures(String classCode) throws ClassNotFoundException, SQLException {
 		System.out.println("02 하나의 클래스에 해당되는 강의들 조회 메서드 진입 LectureDao.java");
-		lectureList = new ArrayList<Lecture>();
+		ArrayList<Lecture> lectureList = new ArrayList<Lecture>();
 		System.out.println("lectureList : "+lectureList);
 		conn = ds.getConnection();
 
@@ -93,6 +90,82 @@ public class LectureDao {
 		return lectureList;
 	}
 	
+	//하나의 과정정보 가져오기
+	public Classes selectOneClass(String classCode) throws ClassNotFoundException, SQLException {
+		System.out.println("03 하나의 과정 조회 메서드 진입 LectureDao.java");
+		Classes classes = new Classes();
+		System.out.println(classes + "<-- classes");
+		conn = ds.getConnection();
+		pstmt = conn.prepareStatement("select * from class where class_code=?");
+		pstmt.setString(1, classCode);
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			classes.setClassCode(rs.getString("class_code"));
+			classes.setInstructorCode(rs.getString("instructor_code"));
+			classes.setClassName(rs.getString("class_name"));
+			classes.setClassLevel(rs.getString("class_level"));
+			classes.setClassCategory(rs.getString("class_category"));
+			classes.setClassPeoriod(rs.getInt("class_peoriod"));
+			classes.setClassPrice(rs.getInt("class_price"));
+			classes.setDiscount(rs.getInt("discount"));
+			classes.setClassNumber(rs.getInt("class_number"));
+			classes.setClassRd(rs.getString("class_rd"));
+			classes.setClassDetail(rs.getString("class_detail"));
+			classes.setSoldNumber(rs.getInt("sold_number"));
+			classes.setSoldAmount(rs.getInt("sold_amount"));
+			classes.setGradeAverage(rs.getFloat("grade_average"));
+			
+			System.out.println(classes + "<--classList");
+		}
+		close();
+		return classes;
+	}
+	
+	//패키지 과정 리스트 가져오기 메서드
+	public ArrayList<Classes> packageClassList(String classCode) throws ClassNotFoundException, SQLException {
+		System.out.println("04 패키지 과정 리스트 조회 메서드 진입 LectureDao.java");
+		ArrayList<Classes> classList = new ArrayList<Classes>();
+		System.out.println(classList + "<-- classList");
+		conn = ds.getConnection();
+		pstmt = conn.prepareStatement("select * from package where class_set=?");
+		pstmt.setString(1, classCode);
+		rs = pstmt.executeQuery();
+		ArrayList<Classes> clCodeList = new ArrayList<Classes>();
+		while (rs.next()) {
+			Classes cl = new Classes();
+			cl.setClassCode(rs.getString("class_one"));
+			clCodeList.add(cl); // ArrayList객체내에 Member객체 주소값을 index 0번 부터 추가
+			System.out.println(clCodeList + "<-- classList");
+		}
+		for(int i = 0; i<clCodeList.size();i++){
+			pstmt = conn.prepareStatement("select * from class where class_code=?");
+			pstmt.setString(1, clCodeList.get(i).getClassCode());
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Classes classes = new Classes();
+				classes.setClassCode(rs.getString("class_code"));
+				classes.setInstructorCode(rs.getString("instructor_code"));
+				classes.setClassName(rs.getString("class_name"));
+				classes.setClassLevel(rs.getString("class_level"));
+				classes.setClassCategory(rs.getString("class_category"));
+				classes.setClassPeoriod(rs.getInt("class_peoriod"));
+				classes.setClassPrice(rs.getInt("class_price"));
+				classes.setDiscount(rs.getInt("discount"));
+				classes.setClassNumber(rs.getInt("class_number"));
+				classes.setClassRd(rs.getString("class_rd"));
+				classes.setClassDetail(rs.getString("class_detail"));
+				classes.setSoldNumber(rs.getInt("sold_number"));
+				classes.setSoldAmount(rs.getInt("sold_amount"));
+				classes.setGradeAverage(rs.getFloat("grade_average"));
+				
+				classList.add(classes);
+			}
+		}
+		close();
+		return classList;
+	}
+	
+	//객체 반납
 	public void close(){
 		if (rs != null)	try { rs.close();} catch (SQLException ex) {}
 		if (pstmt != null) try { pstmt.close();	} catch (SQLException ex) {}

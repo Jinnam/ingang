@@ -26,7 +26,7 @@ public class LectureClassListAction implements Action {
 		request.setAttribute("list", list);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/lecture/lectureClassList.jsp");
+		forward.setPath("/WEB-INF/lecture/classList.jsp");
 		return forward;
 	}
 
