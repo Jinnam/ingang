@@ -2,6 +2,7 @@ package kr.co.no1.member.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,10 +27,25 @@ public class MemberController extends HttpServlet {
 		 if(command.equals("/member/InsertForm.me")){
 			 forward=new ActionForward();
 			 forward.setRedirect(false);
-			 forward.setPath("/member/InsertForm.jsp");
+			 forward.setPath("/WEB-INF/member/InsertForm.jsp");
+		 }else if(command.equals("/member/InsertAction.me")){
+			 action = new MemberInsertAction();
+			 try{
+				 forward = action.execute(request, response);
+			 }catch(Exception e){
+				 e.printStackTrace();
+			 }
 		 }
 		
-		
+		 if(forward != null){
+			   if(forward.isRedirect()){
+				   response.sendRedirect(forward.getPath());
+			   }else{
+				   RequestDispatcher dispatcher=
+					   request.getRequestDispatcher(forward.getPath());
+				   dispatcher.forward(request, response);
+			   }
+			   }
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
