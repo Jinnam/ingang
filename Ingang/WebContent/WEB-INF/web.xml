@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"/>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>ingang</display-name>
+	<servlet>
+		<description>
+		</description>
+		<display-name>MemberController</display-name>
+		<servlet-name>MemberController</servlet-name>
+		<servlet-class>kr.co.no1.member.controller.MemberController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MemberController</servlet-name>
+		<url-pattern>*.me</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>
+		</description>
+		<display-name>LectureController</display-name>
+		<servlet-name>LectureController</servlet-name>
+		<servlet-class>kr.co.no1.LectureController.LectureController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LectureController</servlet-name>
+		<url-pattern>*.le</url-pattern>
+	</servlet-mapping>
+</web-app>
