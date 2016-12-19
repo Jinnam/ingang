@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import inter.Action;
+import inter.ActionForward;
 import kr.co.no1.lecture.db.Classes;
 import kr.co.no1.lecture.db.LectureDao;
 

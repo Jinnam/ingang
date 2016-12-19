@@ -1,4 +1,4 @@
-package kr.co.no1.member.controller;
+package inter;
 
 import javax.servlet.http.*;
 
