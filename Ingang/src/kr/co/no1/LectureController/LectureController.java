@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.no1.lecture.action.Action;
-import kr.co.no1.lecture.action.ActionForward;
-import kr.co.no1.lecture.action.LectureClassListAction;
 
 public class LectureController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

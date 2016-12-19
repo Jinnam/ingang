@@ -1,4 +1,4 @@
-package kr.co.no1.lecture.action;
+package kr.co.no1.LectureController;
 
 import javax.servlet.http.*;
 

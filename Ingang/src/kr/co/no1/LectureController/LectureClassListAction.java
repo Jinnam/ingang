@@ -1,4 +1,4 @@
-package kr.co.no1.lecture.action;
+package kr.co.no1.LectureController;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class LectureClassListAction implements Action {
 		request.setAttribute("list", list);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/lecture/lectureClassList.jsp");
+		forward.setPath("/WEB-INF/lecture/lectureClassList.jsp");
 		return forward;
 	}
 
