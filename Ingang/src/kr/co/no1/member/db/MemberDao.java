@@ -37,14 +37,12 @@ public class MemberDao {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, loginId);
 			rs = pstmt.executeQuery();
-			System.out.println(rs+" : rs");
 			if(rs.next()){
 				if(loginPw.equals(rs.getString("MEMBER_PW"))){
 					member = new Member();
 					member.setMemberId(rs.getString("MEMBER_ID"));
 					member.setMemberLevel(rs.getString("MEMBER_LEVEL"));
 					member.setMemberName(rs.getString("MEMBER_NAME"));
-					System.out.println("여기까지 나오나?");
 				}
 			}
 		}catch(Exception e){

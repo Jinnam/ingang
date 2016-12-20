@@ -40,8 +40,7 @@
 		</table>
 		<table>
 			<tr>
-				<td><input type="button" id="btn" value="가입"/></td>
-				<td><input type="reset" value="초기화"/></td>
+				<td><input type="button" id="btn" value="수정"/></td>
 			</tr>
 		</table>
 	</form>

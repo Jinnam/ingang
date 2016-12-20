@@ -16,9 +16,9 @@ public class MemberUpdateFormAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		request.setCharacterEncoding("euc-kr");
-	//	String memberId = request.getParameter("memberId");
+		String memberId = request.getParameter("memberId");
 		MemberDao memberDao = new MemberDao();
-		Member member = memberDao.mSelectOne("id001");
+		Member member = memberDao.mSelectOne(memberId);
 		
 		request.setAttribute("member", member);
 		

@@ -14,9 +14,9 @@
 <c:if test="${mLogin != null }">
 	
 	${mLogin.memberName }님 로그인하셨습니다.
-	
-	<a href='<c:url value="/member/UpdateForm.me"></c:url>'>회원 수정</a>
-	<a href='<c:url value="/memberDeleteForm.jsp"></c:url>'>회원 탈퇴</a>
+	<a href='<c:url value="/login/logoutAction.me"></c:url>'>로그아웃</a><br/>
+	<a href='<c:url value="/member/UpdateForm.me?memberId=${mLogin.memberId }"></c:url>'>회원 수정</a><br/>
+	<a href='<c:url value="/memberDeleteForm.me"></c:url>'>회원 탈퇴</a>
 </c:if>
 </body>
 </html>
