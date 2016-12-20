@@ -14,6 +14,7 @@ public class ClassInsertFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("ClassInsertFormAction ¡¯¿‘");
 		InstructorDao instructorDao = new InstructorDao();
 		List<Instructor> instructorList = instructorDao.instructorList();
 		request.setAttribute("instructorList", instructorList);

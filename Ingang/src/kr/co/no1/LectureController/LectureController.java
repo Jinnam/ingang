@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import inter.Action;
 import inter.ActionForward;
 
-
 public class LectureController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("LectureController doGet() 호출");
@@ -76,7 +75,36 @@ public class LectureController extends HttpServlet {
 				e.printStackTrace();
 			}
 		
+		//강의 등록 폼
+		}else if(command.equals("/lecture/LectureInsertFormAction.le")){
+			System.out.println("조건문 /lecture/LectureInsertFormAction.le 강의추가 폼");
+			action = new LectureInsertFormAction();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		
+			
+		//강의 등록
+		}else if(command.equals("/lecture/LectureInsertAction.le")){
+			System.out.println("조건문 /lecture/LectureInsertAction.le 강의추가 폼");
+			action = new LectureInsertAction();
+			try{
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		
 		}
+		
+		
+		
+		
+		
+		
+		
+		
 		
 //--- 포워드 할것인가? 리다이렉트 할것인가?
 		if(forward != null){
