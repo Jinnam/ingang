@@ -1,6 +1,6 @@
 package kr.co.no1.LectureController;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +23,7 @@ public class LectureLecListAction implements Action {
 		ActionForward forward = new ActionForward();
 		if(key.equals("cc")){
 			LectureDao lectureDao = new LectureDao();
-			ArrayList<Lecture> list = lectureDao.oneClassLectures(classCode);
+			List<Lecture> list = lectureDao.oneClassLectures(classCode);
 			Classes classes = lectureDao.selectOneClass(classCode);
 			request.setAttribute("list", list);
 			request.setAttribute("classes", classes);
@@ -31,7 +31,7 @@ public class LectureLecListAction implements Action {
 			forward.setPath("/WEB-INF/lecture/lectrueList.jsp");
 		}else{
 			LectureDao lectureDao = new LectureDao();
-			ArrayList<Classes> list = lectureDao.packageClassList(classCode);
+			List<Classes> list = lectureDao.packageClassList(classCode);
 			Classes classes = lectureDao.selectOneClass(classCode);
 			request.setAttribute("list", list);
 			request.setAttribute("classes", classes);

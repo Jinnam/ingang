@@ -1,6 +1,6 @@
 package kr.co.no1.LectureController;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +11,7 @@ import kr.co.no1.lecture.db.Classes;
 import kr.co.no1.lecture.db.LectureDao;
 
 public class LectureClassListAction implements Action {
-	private ArrayList<Classes> list;
+	private List<Classes> list;
 	private Classes cl;
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

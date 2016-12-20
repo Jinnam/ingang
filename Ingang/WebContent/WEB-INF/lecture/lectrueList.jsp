@@ -9,8 +9,9 @@
 <body>
 <h1>강의 리스트</h1>
 
-	<h3>과정명 : ${classes.className}</h3>
+	<h3>과정명 : ${classes.className}</h3><h5> 강사 : ${classes.instructor.instructorName}</h5>
 
+<button onclick="location.href='<c:url value='/lecture/LectureInsertFormAction.le?classCode=${classes.classCode}'/>'">강의등록</button>
 <table border='1'>
 	<tr>
 		<th>강의코드</th>
@@ -23,7 +24,7 @@
 	<c:forEach items="${list}" var="lec">
 		<tr>
 			<td>${lec.lectureCode}</td>
-			<td>${lec.classCode}</td>
+			<td>${lec.classes.className}</td>
 			<td>${lec.lectureName}</td>
 			<td>${lec.lectureDetail}</td>
 			<td>${lec.lectureFile}</td>

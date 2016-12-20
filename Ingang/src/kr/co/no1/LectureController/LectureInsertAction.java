@@ -7,14 +7,17 @@ import inter.Action;
 import inter.ActionForward;
 
 public class LectureInsertAction implements Action {
-	
+
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("LectureInsertAction ¡¯¿‘");
-		request.setCharacterEncoding("euc-kr");
-		String className = request.getParameter("className");
-		System.out.println("className : "+className);
+		String classCode = "";
 		
-		return null;
+		
+		request.setAttribute("classCode", classCode);
+		ActionForward forward = new ActionForward();
+		forward.setPath("/lecture/LecListAction.le");
+		return forward;
 	}
+
 }

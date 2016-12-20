@@ -5,53 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title></title>
-
-<script>
-	
-
-</script>
-
 </head>
 <body>
-<h1>새로운 강의 추가 폼</h1>
-	
-	<form action="<c:url value="/lecture/LectureInsertAction.le"/>" method="post">
-		<table >
-			<tr>
-				<td align="right">과정명 : </td>
-				<td><input type="text" name="className" value=""/></td>
-			</tr>
-			<tr>
-				<td align="right">과정레벨 : </td>
-				<td><input type="text" name="classLevel" /></td>
-			</tr>
-			<tr>
-				<td align="right">카테고리 : </td>
-				<td><input type="text" name="classCategory" value="단과" readonly="readonly"/></td>
-			</tr>
-			<tr>
-				<td align="right">수강기간(30일단위) : </td>
-				<td><input type="text" name="classPeoriod" /></td>
-			</tr>
-			<tr>
-				<td align="right">가격 : </td>
-				<td><input type="text" name="classPrice" /></td>
-			</tr>
-			<tr>
-				<td align="right">할인율 : </td>
-				<td><input type="text" name="discount" /></td>
-			</tr>
-			<tr>
-				<td align="right">상세 : </td>
-				<td><input type="text" name="classDetail" /></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<input type="submit" value="등록" />
-				</td>
-			</tr>		
-		</table>
-	
+<h1>강의 등록 폼</h1>
+과정명 : ${classes.className}
+	<form action="<c:url value="/lecture/LectureInsertAction.le?classCode=${classes.classCode}"/>" method="post">
+		강의명 : <input type="text" name="lectureName"><br>
+		상세 : <input type="text" name="lectureDetail"><br>
+		파일 : <input type="file" name="lectureFile"><br>
+		<input type="submit" value="등록">
 	</form>
 </body>
 </html>
