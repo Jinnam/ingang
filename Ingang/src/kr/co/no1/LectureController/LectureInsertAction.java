@@ -25,9 +25,19 @@ public class LectureInsertAction implements Action {
 		classes.setClassDetail(request.getParameter("classDetail"));
 		System.out.println("classes : "+classes);
 		LectureDao lectureDao = new LectureDao();
-		lectureDao.classInsert(classes);
+		int rowCount = lectureDao.classInsert(classes);
+		System.out.println("rowCount : "+rowCount);
+		ActionForward forward = new ActionForward();
+		if(rowCount != 0){
+			System.out.println("과정등록 성공 ^^");
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/lecture/classList.jsp");
+		}else {
+			System.out.println("과정등록 실패 ㅠㅠ");
+			response.sendRedirect(request.getContextPath()+"/lecture/LectureInsertForm.le");
+		}
 		
 		
-		return null;
+		return forward;
 	}
 }

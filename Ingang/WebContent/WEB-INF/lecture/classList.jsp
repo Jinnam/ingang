@@ -8,16 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>강의 리스트</h1>
+<h1>과정 리스트</h1>
 <c:if test="${classes.className ne null}">
 	<h3>패키지 : ${classes.className}</h3>
 </c:if>
 <table border='1'>
 	<tr>
-		<th>강의코드</th>
+		<th>과정코드</th>
 		<th>강사코드</th>
-		<th>강의명</th>
-		<th>강의등급</th>
+		<th>과정명</th>
+		<th>과정등급</th>
 		<th>카테고리</th>
 		<th>기간</th>
 		<th>가격</th>
@@ -29,7 +29,7 @@
 			<td>${cl.classCode}</td>
 			<td>${cl.instructorCode}</td>
 			
-			<td><a href="<c:url value="/lecture/LecListAction.le"/>?classCode=${cl.classCode}&className=${cl.className}">${cl.className}</a></td>
+			<td><a href="<c:url value="/lecture/LecListAction.le"/>?classCode=${cl.classCode}">${cl.className}</a></td>
 			<td>${cl.classLevel}</td>
 			<td>${cl.classCategory}</td>
 			<td>${cl.classPeoriod}</td>

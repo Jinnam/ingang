@@ -56,7 +56,7 @@ public class LectureController extends HttpServlet {
 				e.printStackTrace();
 			}
 		
-		//강의 등록 폼
+		//과정 등록 폼
 		}else if(command.equals("/lecture/LectureInsertForm.le")){
 			System.out.println("조건문 /lecture/LectureInsertForm.le 강의추가");
 			action = new LectureInsertFormAction();

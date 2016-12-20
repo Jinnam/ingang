@@ -194,33 +194,29 @@ public class LectureDao {
 		int rowCount = 0;
 		try {
 			conn = ds.getConnection();
-			pstmt = conn.prepareStatement("select * from class where class_code=?");
+			pstmt = conn.prepareStatement("insert into class "+
+					"(class_code,instructor_code,class_name,class_level,"+
+					"class_category,class_peoriod,class_price,discount,"+
+					" class_detail,class_rd,class_number) values("+
+					" ?,?,?,?,?,?,?,?,?,to_date(sysdate,'yy/mm/dd'),'0')");
 			pstmt.setString(1, classCode);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				classes.setClassCode(rs.getString("class_code"));
-				classes.setInstructorCode(rs.getString("instructor_code"));
-				classes.setClassName(rs.getString("class_name"));
-				classes.setClassLevel(rs.getString("class_level"));
-				classes.setClassCategory(rs.getString("class_category"));
-				classes.setClassPeoriod(rs.getInt("class_peoriod"));
-				classes.setClassPrice(rs.getInt("class_price"));
-				classes.setDiscount(rs.getInt("discount"));
-				classes.setClassNumber(rs.getInt("class_number"));
-				classes.setClassRd(rs.getString("class_rd"));
-				classes.setClassDetail(rs.getString("class_detail"));
-				classes.setSoldNumber(rs.getInt("sold_number"));
-				classes.setSoldAmount(rs.getInt("sold_amount"));
-				classes.setGradeAverage(rs.getFloat("grade_average"));
-	
-				System.out.println(classes + "<--classList");
-			}
+			pstmt.setString(2, classes.getInstructorCode());
+			pstmt.setString(3, classes.getClassName());
+			pstmt.setString(4, classes.getClassLevel());
+			pstmt.setString(5, classes.getClassCategory());
+			pstmt.setInt(6, classes.getClassPeoriod());
+			pstmt.setInt(7, classes.getClassPrice());
+			pstmt.setInt(8, classes.getDiscount());
+			pstmt.setString(9, classes.getClassDetail());
+			
+			rowCount = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally{
 			close();
 		}
-		return 0;
+		return rowCount;
 	}
 	
 	//코드생성하는 메서드
@@ -263,7 +259,7 @@ public class LectureDao {
 	//오늘날짜 기준으로 등록된 날짜가 있는지 확인하는 메서드
 	private int checkRd(String table){
 		System.out.println("checkRd() 진입 LectureDao.java");
-		SimpleDateFormat formatter = new SimpleDateFormat("yy/MM/dd");
+		SimpleDateFormat formatter = new SimpleDateFormat("yy/mm/dd");
 		Date currentTime = new Date();
 		String dTime = formatter.format(currentTime);
 		System.out.println(dTime);
