@@ -15,7 +15,7 @@
 <table border='1'>
 	<tr>
 		<th>과정코드</th>
-		<th>강사코드</th>
+		<th>강사이름</th>
 		<th>과정명</th>
 		<th>과정등급</th>
 		<th>카테고리</th>
@@ -27,7 +27,7 @@
 	<c:forEach items="${list}" var="cl">
 		<tr>
 			<td>${cl.classCode}</td>
-			<td>${cl.instructorCode}</td>
+			<td>${cl.instructor.instructorName}</td>
 			
 			<td><a href="<c:url value="/lecture/LecListAction.le"/>?classCode=${cl.classCode}">${cl.className}</a></td>
 			<td>${cl.classLevel}</td>

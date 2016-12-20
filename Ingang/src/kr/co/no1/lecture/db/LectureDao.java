@@ -13,6 +13,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import kr.co.no1.instructor.db.Instructor;
+import kr.co.no1.instructor.db.InstructorDao;
+
 public class LectureDao {
 	DataSource ds;
 	Connection conn;
@@ -38,6 +41,8 @@ public class LectureDao {
 		System.out.println("classList() LectureDao.java");
 		ArrayList<Classes> classList = new ArrayList<Classes>();
 		System.out.println(classList + "<-- classList");
+		PreparedStatement pstmtInstructor = null;
+		ResultSet rsInstructor = null;
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement("select * from class");
@@ -45,7 +50,13 @@ public class LectureDao {
 			while (rs.next()) {
 				Classes cl = new Classes();
 				cl.setClassCode(rs.getString("class_code"));
-				cl.setInstructorCode(rs.getString("instructor_code"));
+				//강사 정보 가져와서 과정(Classes) 객체에 담는다
+				Instructor instructor = null;
+				InstructorDao instructorDao = new InstructorDao();
+				instructor = instructorDao.selectOneInstructor(rs.getString("instructor_code"));
+				
+				cl.setInstructor(instructor);
+				
 				cl.setClassName(rs.getString("class_name"));
 				cl.setClassLevel(rs.getString("class_level"));
 				cl.setClassCategory(rs.getString("class_category"));
@@ -113,7 +124,10 @@ public class LectureDao {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				classes.setClassCode(rs.getString("class_code"));
-				classes.setInstructorCode(rs.getString("instructor_code"));
+				Instructor instructor = null;
+				InstructorDao instructorDao = new InstructorDao();
+				instructor = instructorDao.selectOneInstructor(rs.getString("instructor_code"));
+				classes.setInstructor(instructor);
 				classes.setClassName(rs.getString("class_name"));
 				classes.setClassLevel(rs.getString("class_level"));
 				classes.setClassCategory(rs.getString("class_category"));
@@ -161,7 +175,10 @@ public class LectureDao {
 				while (rs.next()) {
 					Classes classes = new Classes();
 					classes.setClassCode(rs.getString("class_code"));
-					classes.setInstructorCode(rs.getString("instructor_code"));
+					Instructor instructor = null;
+					InstructorDao instructorDao = new InstructorDao();
+					instructor = instructorDao.selectOneInstructor(rs.getString("instructor_code"));
+					classes.setInstructor(instructor);
 					classes.setClassName(rs.getString("class_name"));
 					classes.setClassLevel(rs.getString("class_level"));
 					classes.setClassCategory(rs.getString("class_category"));
@@ -200,7 +217,7 @@ public class LectureDao {
 					" class_detail,class_rd,class_number) values("+
 					" ?,?,?,?,?,?,?,?,?,to_date(sysdate,'yy/mm/dd'),'0')");
 			pstmt.setString(1, classCode);
-			pstmt.setString(2, classes.getInstructorCode());
+			pstmt.setString(2, classes.getInstructor().getInstructorCode());
 			pstmt.setString(3, classes.getClassName());
 			pstmt.setString(4, classes.getClassLevel());
 			pstmt.setString(5, classes.getClassCategory());

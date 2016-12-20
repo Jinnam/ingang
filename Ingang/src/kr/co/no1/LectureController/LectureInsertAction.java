@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import inter.Action;
 import inter.ActionForward;
+import kr.co.no1.instructor.db.Instructor;
 import kr.co.no1.lecture.db.Classes;
 import kr.co.no1.lecture.db.LectureDao;
 
@@ -15,7 +16,9 @@ public class LectureInsertAction implements Action {
 		System.out.println("LectureInsertAction ¡¯¿‘");
 		request.setCharacterEncoding("euc-kr");
 		Classes classes = new Classes();
-		classes.setInstructorCode(request.getParameter("instructorCode"));
+		Instructor instructor = new Instructor();
+		instructor.setInstructorCode(request.getParameter("instructorCode"));
+		classes.setInstructor(instructor);
 		classes.setClassName(request.getParameter("className"));
 		classes.setClassLevel(request.getParameter("classLevel"));
 		classes.setClassCategory(request.getParameter("classCategory"));

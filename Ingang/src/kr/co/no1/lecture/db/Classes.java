@@ -1,8 +1,10 @@
 package kr.co.no1.lecture.db;
 
+import kr.co.no1.instructor.db.Instructor;
+
 public class Classes {
 	private String classCode;
-	private String instructorCode;
+	private Instructor instructor;
 	private String className;
 	private String classLevel;
 	private String classCategory;
@@ -22,11 +24,11 @@ public class Classes {
 	public void setClassCode(String classCode) {
 		this.classCode = classCode;
 	}
-	public String getInstructorCode() {
-		return instructorCode;
+	public Instructor getInstructor() {
+		return instructor;
 	}
-	public void setInstructorCode(String instructorCode) {
-		this.instructorCode = instructorCode;
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
 	}
 	public String getClassName() {
 		return className;
@@ -100,14 +102,17 @@ public class Classes {
 	public void setGradeAverage(float gradeAverage) {
 		this.gradeAverage = gradeAverage;
 	}
+	
 	@Override
 	public String toString() {
-		return "Classes [classCode=" + classCode + ", instructorCode=" + instructorCode + ", className=" + className
+		return "Classes [classCode=" + classCode + ", instructor=" + instructor + ", className=" + className
 				+ ", classLevel=" + classLevel + ", classCategory=" + classCategory + ", classPeoriod=" + classPeoriod
 				+ ", classPrice=" + classPrice + ", discount=" + discount + ", classNumber=" + classNumber
 				+ ", classRd=" + classRd + ", classDetail=" + classDetail + ", soldNumber=" + soldNumber
 				+ ", soldAmount=" + soldAmount + ", gradeAverage=" + gradeAverage + "]";
 	}
+	
+	
 	
 	
 }

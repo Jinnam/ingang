@@ -31,6 +31,7 @@ public class InstructorDao {
 		}
 	}
 	
+	//강사 전체 리스트
 	public List<Instructor> instructorList(){
 		System.out.println("instructorList() 진입 InstructorDao.java");
 		ArrayList<Instructor> list = new ArrayList<Instructor>();
@@ -54,6 +55,31 @@ public class InstructorDao {
 			close();
 		}
 		return list;
+	}
+	
+	//강사 한명
+	public Instructor selectOneInstructor(String instructroCode){
+		System.out.println("selectOneInstructor() 진입 InstructorDao.java");
+		Instructor instructor = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement("select * from instructor where instructor_code=?");
+			pstmt.setString(1, instructroCode);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				instructor = new Instructor();
+				instructor.setInstructorCode(rs.getString("instructor_code"));
+				instructor.setInstructorName(rs.getString("instructor_name"));
+				instructor.setInstructorDetail(rs.getString("instructor_detail"));
+				instructor.setInstructorImage(rs.getString("instructor_image"));
+			}
+			System.out.println("instructor : "+instructor);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close();
+		}
+		return instructor;
 	}
 	
 	// 객체 반납
