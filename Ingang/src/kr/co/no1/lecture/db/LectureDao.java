@@ -188,30 +188,71 @@ public class LectureDao {
 	// 과정등록 메서드
 	public int classInsert(Classes classes) {
 		System.out.println("classInsert() 진입 LectureDao.java");
-		String classCode = "cc";
-		SimpleDateFormat formatter = new SimpleDateFormat("yyMMdd");
-		Date currentTime = new Date();
-		String dTime = formatter.format(currentTime);
-		System.out.println(dTime);
-		classCode += dTime;
-		System.out.println("classCode : " + classCode);
-		
-		int codeNo = 1;
-		
-		String resultCodeNo = String.format("%04d", codeNo);
-		classCode += resultCodeNo;
-		System.out.println("classCode : " + classCode);
-
+		String classCode = makeCode("class");
+		System.out.println("classCode : "+classCode);
 		
 		return 0;
 	}
 	
-	//오늘 기준으로 등록된 날짜가 있는지 확인하는 메서드
-	public int checkRd(){
+	//코드생성하는 메서드
+	private String makeCode(String kind){
+		System.out.println("makeCode() 진입 LectureDao.java");
+		String madeClassCode = null;
+		String table = null;
+		switch(kind){
+			case "class" :
+				madeClassCode = "cc";
+				table = "class";
+				break;
+			case "lecture" :
+				madeClassCode = "lc";
+				table = "lecture";
+				break;
+				
+			default : break;
+		}
+		//현재날짜를 가져와서 원하는 포멧으로 바꾸꿈
+		SimpleDateFormat formatter = new SimpleDateFormat("yyMMdd");
+		Date currentTime = new Date();
+		String dTime = formatter.format(currentTime);
+		System.out.println(dTime);
+		
+		madeClassCode += dTime;
+		System.out.println("madeClassCode : " + madeClassCode);
+		//오늘날짜로 등록된게 몇개인지 받아와서 1을 더해줌
+		int codeNo = checkRd(table)+1;
+		System.out.println("codeNo : "+codeNo);
+		//받아온 개수를 4자리수 문자열로 변환
+		String resultCodeNo = String.format("%04d", codeNo);
+		madeClassCode += resultCodeNo;
+		System.out.println("madeClassCode : " + madeClassCode);
+		
+		
+		return madeClassCode;
+	}
+	
+	//오늘날짜 기준으로 등록된 날짜가 있는지 확인하는 메서드
+	private int checkRd(String table){
 		System.out.println("checkRd() 진입 LectureDao.java");
-		
-		
-		return 0;
+		SimpleDateFormat formatter = new SimpleDateFormat("yy/MM/dd");
+		Date currentTime = new Date();
+		String dTime = formatter.format(currentTime);
+		System.out.println(dTime);
+		int count = 0;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement("select count(*) from "+table+" where class_rd=?");
+			pstmt.setString(1, dTime);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close();
+		}
+		return count;
 	}
 
 	// 객체 반납
