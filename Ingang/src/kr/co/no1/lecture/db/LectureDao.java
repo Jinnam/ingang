@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -33,7 +34,7 @@ public class LectureDao {
 	}
 
 	// 전체 과정 리스트 가져오는 메서드
-	public ArrayList<Classes> classList() {
+	public List<Classes> classList() {
 		System.out.println("classList() LectureDao.java");
 		ArrayList<Classes> classList = new ArrayList<Classes>();
 		System.out.println(classList + "<-- classList");
@@ -70,7 +71,7 @@ public class LectureDao {
 	}
 
 	// 하나의 과정에 따른 강의 리스트 조회 메서드
-	public ArrayList<Lecture> oneClassLectures(String classCode) {
+	public List<Lecture> oneClassLectures(String classCode) {
 		System.out.println("oneClassLectures() 진입 LectureDao.java");
 		ArrayList<Lecture> lectureList = new ArrayList<Lecture>();
 		System.out.println("lectureList : " + lectureList);
@@ -137,7 +138,7 @@ public class LectureDao {
 	}
 
 	// 패키지 과정 리스트 가져오기 메서드
-	public ArrayList<Classes> packageClassList(String classCode) {
+	public List<Classes> packageClassList(String classCode) {
 		System.out.println("packageClassList() 진입 LectureDao.java");
 		ArrayList<Classes> classList = new ArrayList<Classes>();
 		System.out.println(classList + "<-- classList");
