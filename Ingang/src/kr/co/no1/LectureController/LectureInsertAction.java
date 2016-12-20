@@ -30,14 +30,11 @@ public class LectureInsertAction implements Action {
 		ActionForward forward = new ActionForward();
 		if(rowCount != 0){
 			System.out.println("과정등록 성공 ^^");
-			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/lecture/classList.jsp");
+			forward.setRedirect(true);
+			forward.setPath(request.getContextPath()+"/lecture/ClassListAction.le");
 		}else {
 			System.out.println("과정등록 실패 ㅠㅠ");
-			response.sendRedirect(request.getContextPath()+"/lecture/LectureInsertForm.le");
 		}
-		
-		
 		return forward;
 	}
 }

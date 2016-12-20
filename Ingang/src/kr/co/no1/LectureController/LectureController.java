@@ -83,8 +83,7 @@ public class LectureController extends HttpServlet {
 			if(forward.isRedirect()){
 				response.sendRedirect(forward.getPath());
 			}else{
-				RequestDispatcher dispatcher=
-						request.getRequestDispatcher(forward.getPath());
+				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				System.out.println(forward.getPath() + "<--- forward.getPath()[jsp 이동경로]");
 				System.out.println();
 				dispatcher.forward(request, response);

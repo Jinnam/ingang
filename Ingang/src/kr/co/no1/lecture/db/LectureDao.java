@@ -259,10 +259,10 @@ public class LectureDao {
 	//오늘날짜 기준으로 등록된 날짜가 있는지 확인하는 메서드
 	private int checkRd(String table){
 		System.out.println("checkRd() 진입 LectureDao.java");
-		SimpleDateFormat formatter = new SimpleDateFormat("yy/mm/dd");
+		SimpleDateFormat formatter = new SimpleDateFormat("yy/MM/dd");
 		Date currentTime = new Date();
 		String dTime = formatter.format(currentTime);
-		System.out.println(dTime);
+		System.out.println("dTime : "+dTime);
 		int count = 0;
 		try {
 			conn = ds.getConnection();
