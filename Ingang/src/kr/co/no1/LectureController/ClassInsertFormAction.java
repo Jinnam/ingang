@@ -19,7 +19,7 @@ public class ClassInsertFormAction implements Action {
 		request.setAttribute("instructorList", instructorList);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/lecture/lectureInsertForm.jsp");
+		forward.setPath("/WEB-INF/lecture/classInsertForm.jsp");
 		return forward;
 	}
 }

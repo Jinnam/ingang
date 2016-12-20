@@ -41,8 +41,6 @@ public class LectureDao {
 		System.out.println("classList() LectureDao.java");
 		ArrayList<Classes> classList = new ArrayList<Classes>();
 		System.out.println(classList + "<-- classList");
-		PreparedStatement pstmtInstructor = null;
-		ResultSet rsInstructor = null;
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement("select * from class");
@@ -85,7 +83,7 @@ public class LectureDao {
 	public List<Lecture> oneClassLectures(String classCode) {
 		System.out.println("oneClassLectures() 진입 LectureDao.java");
 		ArrayList<Lecture> lectureList = new ArrayList<Lecture>();
-		System.out.println("lectureList : " + lectureList);
+		System.out.println("lectureList1 : " + lectureList);
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement("select * from lecture where class_code=?");
@@ -95,7 +93,7 @@ public class LectureDao {
 			while (rs.next()) {
 				le = new Lecture();
 				le.setLectureCode(rs.getString("lecture_code"));
-				le.setClassCode(rs.getString("class_code"));
+				le.setClassCode(rs.getString("class_code"));	
 				le.setLectureName(rs.getString("lecture_name"));
 				le.setLectureDetail(rs.getString("lecture_detail"));
 				le.setLectureFile(rs.getString("lecture_file"));
@@ -103,7 +101,17 @@ public class LectureDao {
 	
 				lectureList.add(le); // ArrayList객체내에 Member객체 주소값을 index 0번 부터 추가
 			}
-			System.out.println("lectureList : " + lectureList);
+			
+			if(lectureList != null){
+				for(int i=0; i < lectureList.size(); i++){
+					Lecture lecture =lectureList.get(i);
+					Classes classes = selectOneClass(lecture.getClassCode());
+					if(classes != null){
+						lecture.setClasses(classes);
+					}
+				}
+			}
+			System.out.println("lectureList2 : " + lectureList);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally{
@@ -116,7 +124,6 @@ public class LectureDao {
 	public Classes selectOneClass(String classCode) {
 		System.out.println("selectOneClass() 진입 LectureDao.java");
 		Classes classes = new Classes();
-		System.out.println(classes + "<-- classes");
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement("select * from class where class_code=?");
@@ -298,7 +305,7 @@ public class LectureDao {
 	}
 
 	// 객체 반납
-	public void close() {
+	private void close() {
 		if (rs != null)	try {rs.close();} catch (SQLException ex) {	}
 		if (pstmt != null)	try {pstmt.close();	} catch (SQLException ex) {	}
 		if (conn != null)	try {conn.close();	} catch (SQLException ex) {	}

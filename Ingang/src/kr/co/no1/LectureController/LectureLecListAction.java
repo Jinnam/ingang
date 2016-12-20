@@ -1,6 +1,5 @@
 package kr.co.no1.LectureController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
