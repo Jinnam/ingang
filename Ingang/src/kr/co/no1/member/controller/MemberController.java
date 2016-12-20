@@ -58,7 +58,6 @@ public class MemberController extends HttpServlet {
 		}
 		//로그아웃
 		else if(command.equals("/login/logoutAction.me")){
-			System.out.println("logout action 진입");
 			action = new LogoutAction();
 			try{
 				forward = action.execute(request, response);
@@ -66,7 +65,21 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
+		//아이디 찾기 폼
+		else if(command.equals("/member/FindIdForm.me")){
+			forward=new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/member/memberFindIdForm.jsp");
+		}
+		//아이디찾기 액션
+		else if(command.equals("/member/FindIdAction.me")){
+			action = new MemberFindIdAction();
+			try{
+				forward = action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 		//삭제 화면
 	/*	else if(command.equals("/login/LoginAction.me")){
 			

@@ -11,7 +11,7 @@
 
 	<c:if test="${mLogin == null }">
 		<a href='<c:url value="/login/Login.me"></c:url>'>로그인</a>&nbsp;&nbsp;
-		<a href="">아이디/비밀번호 찾기</a>&nbsp;&nbsp;
+		<a href='<c:url value="/member/FindIdForm.me"></c:url>'>아이디/비밀번호 찾기</a>&nbsp;&nbsp;
 		<a href='<c:url value="/member/InsertForm.me"></c:url>'>회원가입</a>&nbsp;&nbsp;
 	</c:if>
 	<c:if test="${mLogin != null }">

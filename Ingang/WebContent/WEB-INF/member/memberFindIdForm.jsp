@@ -8,14 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:import url="/top.jsp"></c:import>
-<%
-	//회원가입
-	//response.sendRedirect(request.getContextPath()+"/member/InsertForm.me");
-	//검색&리스트
-	//response.sendRedirect(request.getContextPath()+"/member/SearchForm.me");
-	//회원정보 수정
-	//response.sendRedirect(request.getContextPath()+"/member/UpdateForm.me");
- %>
+	<form action='<c:url value="/member/FindIdAction.me"></c:url>' method="post">
+		<table>
+			<tr>
+				<td>이름</td><td><input type="text" name="findName"/></td>
+			</tr>
+			<tr>
+				<td>전화전호</td><td><input type="text" name="findPhone"/></td>
+			</tr>
+		</table>
+		<input type="submit" value="아이디찾기"/>
+	</form>
+	<a href='<c:url value=""></c:url>'>비밀번호찾기</a>
 </body>
 </html>

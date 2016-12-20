@@ -31,7 +31,7 @@
 										<input id="phone3" type="text" name="phone3" maxlength="4" size="4"/><span id="phoneHelper"></span></td>
 				</tr>
 				<tr>
-					<td>성별</td><td><input id = "gender1" type="radio" name="gender" value="man"/>남
+					<td>성별</td><td><input id = "gender1" type="radio" name="gender" checked="checked" value="man"/>남
 									<input id="gender2" type="radio" name="gender" value="woman"/>여</td><span id="genderHelper"></span>
 				</tr>
 				<tr>

@@ -25,8 +25,32 @@ public class MemberDao {
 			System.out.println("DB 연결 실패 : " + ex);
 			return;
 		}
-		
 	}
+	//아이디 찾기
+	public String mFindId(String name, String phone){
+		String result=null;
+		String sql = "SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_NAME=? AND MEMBER_PHONE=?";
+		try{
+			con=ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result = rs.getString("MEMBER_ID");
+				System.out.println(result +" : result");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}	
+		}
+		return result;
+	}
+	
+	
 	//로그인 1명 정보가져오기
 	public Member mLogin(String loginId, String loginPw){
 		Member member=null;

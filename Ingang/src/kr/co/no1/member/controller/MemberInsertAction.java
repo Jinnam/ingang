@@ -37,7 +37,7 @@ public class MemberInsertAction implements Action {
 		//주소
 		member.setMemberAddr(request.getParameter("addr"));
 		
-		//비밀번호와 비번체크 받아서 비교 후 member에 셋팅
+		//비밀번호 셋팅
 		member.setMemberPw(request.getParameter("password"));
 		
 	
