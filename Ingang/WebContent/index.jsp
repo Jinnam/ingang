@@ -8,13 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<a href="<c:url value='/member/InsertForm.no1'/>">1.로그인</a>
-<a href="<c:url value='/member1/InsertForm.no1'/>">2.아이디</a> /
-<a href="<c:url value='/member/memberInsertForm.no1'/>">비밀번호찾기</a>
-<a href="<c:url value='/member1/member/InsertForm.no1'/>">3.회원가입</a>
-<a href="">4.결제내역</a>
-<a href="">5.회원정보</a>
+<c:import url="/top.jsp"></c:import>
+<%
+	//회원가입
+	//response.sendRedirect(request.getContextPath()+"/member/InsertForm.me");
+	//검색&리스트
+	//response.sendRedirect(request.getContextPath()+"/member/SearchForm.me");
+	//회원정보 수정
+	//response.sendRedirect(request.getContextPath()+"/member/UpdateForm.me");
+ %>
+ <br>
 <a href="<c:url value='/lecture/ClassListAction.le'/>">6.수강신청</a>
 <a href="">7.강사소개</a>
 <a href="">8.내강의실</a>
