@@ -18,6 +18,6 @@
 <a href="<c:url value='/lecture/ClassListAction.le'/>">6.수강신청</a>
 <a href="">7.강사소개</a>
 <a href="">8.내강의실</a>
-<a href="<c:url value='/lecture/LectureInsertForm.le'/>">9.강의추가</a>
+<a href="<c:url value='/lecture/ClassInsertFormAction.le'/>">9.강의추가</a>
 </body>
 </html>

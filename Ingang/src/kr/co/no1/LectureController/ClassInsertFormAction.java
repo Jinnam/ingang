@@ -10,7 +10,7 @@ import inter.ActionForward;
 import kr.co.no1.instructor.db.Instructor;
 import kr.co.no1.instructor.db.InstructorDao;
 
-public class LectureInsertFormAction implements Action {
+public class ClassInsertFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

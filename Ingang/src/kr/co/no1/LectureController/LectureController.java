@@ -57,9 +57,9 @@ public class LectureController extends HttpServlet {
 			}
 		
 		//과정 등록 폼
-		}else if(command.equals("/lecture/LectureInsertForm.le")){
-			System.out.println("조건문 /lecture/LectureInsertForm.le 강의추가");
-			action = new LectureInsertFormAction();
+		}else if(command.equals("/lecture/ClassInsertFormAction.le")){
+			System.out.println("조건문 /lecture/ClassInsertFormAction.le 과정추가 폼");
+			action = new ClassInsertFormAction();
 			try{
 				forward=action.execute(request, response);
 			}catch(Exception e){
@@ -67,9 +67,9 @@ public class LectureController extends HttpServlet {
 			}
 			
 		//과정 등록 실행
-		}else if(command.equals("/lecture/LectureInsertAction.le")){
-			System.out.println("조건문 /lecture/LectureInsertAction.le 강의리스트");
-			action = new LectureInsertAction();
+		}else if(command.equals("/lecture/ClassInsertAction.le")){
+			System.out.println("조건문 /lecture/ClassInsertAction.le 과정추가");
+			action = new ClassInsertAction();
 			try{
 				forward=action.execute(request, response);
 			}catch(Exception e){

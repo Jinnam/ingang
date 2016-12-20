@@ -15,7 +15,7 @@
 <body>
 <h1>새로운 과정 추가 폼</h1>
 	
-	<form action="<c:url value="/lecture/LectureInsertAction.le"/>" method="post">
+	<form action="<c:url value="/lecture/ClassInsertAction.le"/>" method="post">
 		<table >
 			<tr>
 				<td align="right">강사선택 : </td>
