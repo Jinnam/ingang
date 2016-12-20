@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% response.sendRedirect(request.getContextPath()+"/member/InsertForm.me"); %>
+<%
+	//회원가입
+	//response.sendRedirect(request.getContextPath()+"/member/InsertForm.me");
+	//검색&리스트
+	//response.sendRedirect(request.getContextPath()+"/member/SearchForm.me");
+	//회원정보 수정
+	response.sendRedirect(request.getContextPath()+"/member/UpdateForm.me");
+ %>
 </body>
 </html>

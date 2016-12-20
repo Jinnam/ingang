@@ -10,6 +10,11 @@
 	window.addEventListener("load", function() {
 			var btn=document.querySelector("#btn");
 			var idCheck = document.querySelector("#idCheck");
+			idCheck.addEventListener("click", function(){
+				
+				
+			})
+			
 			btn.addEventListener("click", function(){
 				if(document.querySelector("#id").value==""){
 					document.querySelector("#idHelper").innerHTML="ID를 입력하세요."
@@ -96,8 +101,8 @@
 					<td>생년월일(ex 990101)</td><td><input id="birth" type="text" maxlength="6" name="birth" /><span id="birthHelper"></span></td>
 				</tr>
 				<tr>
-					<td>휴대전화</td><td><input id="phone1" type="text" name="phone1" maxlength="3" size="3"/>
-										<input id="phone2" type="text" name="phone2" maxlength="4" size="4"/>
+					<td>휴대전화</td><td><input id="phone1" type="text" name="phone1" maxlength="3" size="3"/>-
+										<input id="phone2" type="text" name="phone2" maxlength="4" size="4"/>-
 										<input id="phone3" type="text" name="phone3" maxlength="4" size="4"/><span id="phoneHelper"></span></td>
 				</tr>
 				<tr>
