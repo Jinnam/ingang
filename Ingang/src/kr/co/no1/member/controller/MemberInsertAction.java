@@ -47,7 +47,7 @@ public class MemberInsertAction implements Action {
 		
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("");
+		forward.setPath("/index2.jsp");
 		
 		return forward;
 	}

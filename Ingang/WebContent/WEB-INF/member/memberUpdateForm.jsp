@@ -44,6 +44,6 @@
 			</tr>
 		</table>
 	</form>
-
+		<input type="button" id="drop" value="Ε»Επ"/></td>
 </body>
 </html>

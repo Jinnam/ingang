@@ -15,6 +15,7 @@ public class MemberSearchFormAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("euc-kr");
+		/*
 		String searchId = request.getParameter("searchId");
 		String searchName = request.getParameter("searchName");
 		String birthStart = request.getParameter("birthStart");
@@ -28,6 +29,7 @@ public class MemberSearchFormAction implements Action {
 		String rdStart = request.getParameter("rdStart");
 		String rdEnd=request.getParameter("rdEnd");
 		String levelSelect = request.getParameter("levelSelect");
+		*/
 		
 		MemberDao memberDao = new MemberDao();
 		List<Member> member = memberDao.mSelectAll();

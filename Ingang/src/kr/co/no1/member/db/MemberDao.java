@@ -133,7 +133,7 @@ public class MemberDao {
 		String sql = "INSERT INTO MEMBER("
 				+ "MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH,"
 				+ " MEMBER_PHONE,MEMBER_GENDER,MEMBER_ADDR,MEMBER_RD,"
-				+ "MEMBER_LEVEL) VALUES (?,?,?,?,?,?,?,SYSDATE,'member')";
+				+ "MEMBER_LEVEL) VALUES (?,?,?,?,?,?,?,(TO_DATE(SYSDATE,'YY/MM/DD')),'member')";
 		int result=-1;
 		
 		try{
