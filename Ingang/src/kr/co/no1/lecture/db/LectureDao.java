@@ -209,7 +209,37 @@ public class LectureDao {
 		}
 		return classList;
 	}
-
+	
+	//강의등록 메서드
+	public int lectureInsert(Lecture lecture){
+		System.out.println("lectureInsert() 진입 LectureDao.java");
+		String lectureCode = makeCode("lecture");
+		System.out.println("lectureCode : "+lectureCode);
+		int rowCount = 0;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement("insert into lecture "+
+					"(lecture_code,class_code,lecture_name,lecture_detail,lecture_file,lecture_rd)"+
+					" values(?,?,?,?,?,to_date(sysdate,'yy/mm/dd'))");
+			pstmt.setString(1, lectureCode);
+			pstmt.setString(2, lecture.getClassCode());
+			pstmt.setString(3, lecture.getLectureName());
+			pstmt.setString(4, lecture.getLectureDetail());
+			pstmt.setString(5, "강의파일");
+			System.out.println("pstmt : "+pstmt);
+			rowCount = pstmt.executeUpdate();
+			//과정의 class_number 값+1하기
+			classNumberAdd(lecture.getClassCode());
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close();
+		}
+		return rowCount;
+	}
+	
+	
 	// 과정등록 메서드
 	public int classInsert(Classes classes) {
 		System.out.println("classInsert() 진입 LectureDao.java");
@@ -243,6 +273,33 @@ public class LectureDao {
 		return rowCount;
 	}
 	
+	//하나의 과정에서 강의 숫자 올리기
+	private void classNumberAdd(String classCode){
+		System.out.println("classNumberAdd() 진입 LectureDao.java");
+		int classNumber = 0;
+		try{
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement("select class_number from class where class_code=? ");
+			pstmt.setString(1, classCode);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				classNumber = rs.getInt(1);
+				System.out.println("classNumber1 : "+classNumber);
+				classNumber++;
+				System.out.println("classNumber2 : "+classNumber);
+			}
+			pstmt = conn.prepareStatement("update class set class_number=? where class_code=?");
+			pstmt.setInt(1, classNumber);
+			pstmt.setString(2, classCode);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close();
+		}
+		
+	}
+
 	//코드생성하는 메서드
 	private String makeCode(String kind){
 		System.out.println("makeCode() 진입 LectureDao.java");
@@ -290,7 +347,7 @@ public class LectureDao {
 		int count = 0;
 		try {
 			conn = ds.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from "+table+" where class_rd=?");
+			pstmt = conn.prepareStatement("select count(*) from "+table+" where "+table+"_rd=?");
 			pstmt.setString(1, dTime);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {

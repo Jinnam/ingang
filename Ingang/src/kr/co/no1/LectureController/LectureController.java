@@ -31,7 +31,6 @@ public class LectureController extends HttpServlet {
 		String command=RequestURI.substring(contextPath.length());
 		System.out.println(command + "<-- command");
 		System.out.println("----------LectureController.java----------------");
-		System.out.println();
 		ActionForward forward = null;
 		Action action = null;
 		
