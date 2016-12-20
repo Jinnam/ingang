@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<h1>새로운 강의 추가 폼</h1>
+<h1>새로운 과정 추가 폼</h1>
 	
 	<form action="<c:url value="/lecture/LectureInsertAction.le"/>" method="post">
 		<table >

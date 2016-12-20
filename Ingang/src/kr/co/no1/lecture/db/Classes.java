@@ -100,5 +100,14 @@ public class Classes {
 	public void setGradeAverage(float gradeAverage) {
 		this.gradeAverage = gradeAverage;
 	}
+	@Override
+	public String toString() {
+		return "Classes [classCode=" + classCode + ", instructorCode=" + instructorCode + ", className=" + className
+				+ ", classLevel=" + classLevel + ", classCategory=" + classCategory + ", classPeoriod=" + classPeoriod
+				+ ", classPrice=" + classPrice + ", discount=" + discount + ", classNumber=" + classNumber
+				+ ", classRd=" + classRd + ", classDetail=" + classDetail + ", soldNumber=" + soldNumber
+				+ ", soldAmount=" + soldAmount + ", gradeAverage=" + gradeAverage + "]";
+	}
+	
 	
 }
