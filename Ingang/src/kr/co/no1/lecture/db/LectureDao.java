@@ -190,7 +190,35 @@ public class LectureDao {
 		System.out.println("classInsert() ¡¯¿‘ LectureDao.java");
 		String classCode = makeCode("class");
 		System.out.println("classCode : "+classCode);
-		
+		int rowCount = 0;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement("select * from class where class_code=?");
+			pstmt.setString(1, classCode);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				classes.setClassCode(rs.getString("class_code"));
+				classes.setInstructorCode(rs.getString("instructor_code"));
+				classes.setClassName(rs.getString("class_name"));
+				classes.setClassLevel(rs.getString("class_level"));
+				classes.setClassCategory(rs.getString("class_category"));
+				classes.setClassPeoriod(rs.getInt("class_peoriod"));
+				classes.setClassPrice(rs.getInt("class_price"));
+				classes.setDiscount(rs.getInt("discount"));
+				classes.setClassNumber(rs.getInt("class_number"));
+				classes.setClassRd(rs.getString("class_rd"));
+				classes.setClassDetail(rs.getString("class_detail"));
+				classes.setSoldNumber(rs.getInt("sold_number"));
+				classes.setSoldAmount(rs.getInt("sold_amount"));
+				classes.setGradeAverage(rs.getFloat("grade_average"));
+	
+				System.out.println(classes + "<--classList");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close();
+		}
 		return 0;
 	}
 	
