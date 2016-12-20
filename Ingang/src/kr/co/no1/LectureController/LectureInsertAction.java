@@ -15,6 +15,7 @@ public class LectureInsertAction implements Action {
 		System.out.println("LectureInsertAction ¡¯¿‘");
 		request.setCharacterEncoding("euc-kr");
 		Classes classes = new Classes();
+		classes.setInstructorCode(request.getParameter("instructorCode"));
 		classes.setClassName(request.getParameter("className"));
 		classes.setClassLevel(request.getParameter("classLevel"));
 		classes.setClassCategory(request.getParameter("classCategory"));
@@ -22,6 +23,7 @@ public class LectureInsertAction implements Action {
 		classes.setClassPrice(Integer.parseInt(request.getParameter("classPrice")));
 		classes.setDiscount(Integer.parseInt(request.getParameter("discount")));
 		classes.setClassDetail(request.getParameter("classDetail"));
+		System.out.println("classes : "+classes);
 		LectureDao lectureDao = new LectureDao();
 		lectureDao.classInsert(classes);
 		

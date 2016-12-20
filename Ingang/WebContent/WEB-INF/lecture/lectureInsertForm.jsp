@@ -18,6 +18,17 @@
 	<form action="<c:url value="/lecture/LectureInsertAction.le"/>" method="post">
 		<table >
 			<tr>
+				<td align="right">강사선택 : </td>
+				<td>
+					<select name="instructorCode">
+						<option value="">::선택::</option>
+						<c:forEach items="${instructorList}" var="inList">
+							<option value="${inList.instructorCode}">${inList.instructorName}</option>
+						</c:forEach>
+					</select>
+				</td>
+			</tr>
+			<tr>
 				<td align="right">과정명 : </td>
 				<td><input type="text" name="className" value=""/></td>
 			</tr>

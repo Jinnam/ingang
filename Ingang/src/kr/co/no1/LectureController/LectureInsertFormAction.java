@@ -15,9 +15,11 @@ public class LectureInsertFormAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		InstructorDao instructorDao = new InstructorDao();
-		List<Instructor> list = instructorDao.instructorList();
-		
-		return null;
+		List<Instructor> instructorList = instructorDao.instructorList();
+		request.setAttribute("instructorList", instructorList);
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);
+		forward.setPath("/WEB-INF/lecture/lectureInsertForm.jsp");
+		return forward;
 	}
-
 }
