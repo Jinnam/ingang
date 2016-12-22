@@ -108,6 +108,16 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		//회원 정보 수정 액션
+		else if(command.equals("/member/memberUpdateAction.me")){
+			System.out.println("/member/memberUpdateAction.me 진입");
+			action = new MemberUpdateProAction();
+			try{
+				forward = action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 		
 		
 		

@@ -78,6 +78,39 @@ public class MemberDao {
 		}
 		return member;
 	}
+	//수정
+	public String mUpdate(Member member){
+		String sql = "UPDATE MEMBER SET MEMBER_PW=?, MEMBER_NAME=?, MEMBER_BIRTH=?, MEMBER_PHONE=?, MEMBER_GENDER=?, MEMBER_ADDR=? WHERE MEMBER_ID=?";
+		int result=-1;
+		String memberId=null;
+		System.out.println(member + " : : :member");
+		try{
+			con = ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			System.out.println(pstmt+" : pstmt update");
+			pstmt.setString(1, member.getMemberPw());
+			pstmt.setString(2, member.getMemberName());
+			pstmt.setInt(3, member.getMemberBirth());
+			pstmt.setString(4, member.getMemberPhone());
+			pstmt.setString(5, member.getMemberGender());
+			pstmt.setString(6, member.getMemberAddr());
+			pstmt.setString(7, member.getMemberId());
+			result = pstmt.executeUpdate();
+			if(result ==1){
+				memberId =member.getMemberId();
+			}
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		return memberId;
+	
+		
+	}
+	
 	
 	
 	//한명 정보 가져오기

@@ -19,9 +19,14 @@ public class MemberUpdateFormAction implements Action {
 		String memberId = request.getParameter("memberId");
 		MemberDao memberDao = new MemberDao();
 		Member member = memberDao.mSelectOne(memberId);
+		String phone1 = member.getMemberPhone().substring(0, 3);
+		String phone2 = member.getMemberPhone().substring(4, 8);
+		String phone3 = member.getMemberPhone().substring(9, 13);
 		
 		request.setAttribute("member", member);
-		
+		request.setAttribute("phone1", phone1);
+		request.setAttribute("phone2", phone2);
+		request.setAttribute("phone3", phone3);
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/member/memberUpdateForm.jsp");

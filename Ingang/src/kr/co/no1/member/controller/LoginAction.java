@@ -28,7 +28,7 @@ public class LoginAction implements Action {
 		
 		ActionForward forward= new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("../top.jsp");
+		forward.setPath("/WEB-INF/module/top.jsp");
 		
 		return forward;
 	}

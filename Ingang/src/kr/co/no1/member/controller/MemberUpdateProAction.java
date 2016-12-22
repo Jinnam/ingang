@@ -1,6 +1,5 @@
 package kr.co.no1.member.controller;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,28 +8,19 @@ import inter.ActionForward;
 import kr.co.no1.member.db.Member;
 import kr.co.no1.member.db.MemberDao;
 
-public class MemberInsertAction implements Action {
+public class MemberUpdateProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+		System.out.println("MemberUpdateProAction 진입");
 		request.setCharacterEncoding("euc-kr");
-		System.out.println("ActionForward InsertAction");
 		Member member = new Member();
-		
-		//아이디 받아서 member에 셋팅
-		member.setMemberId(request.getParameter("id"));
-		
-		//이름 받아서 셋팅
+		member.setMemberId(request.getParameter("memberId"));
+		member.setMemberPw(request.getParameter("password"));
 		member.setMemberName(request.getParameter("name"));
-		
-		//생일
 		member.setMemberBirth(Integer.parseInt(request.getParameter("birth")));
-		
-		//전화번호
-		String phone = request.getParameter("phone1")+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
-		member.setMemberPhone(phone);
-		
+		String memberPhone=request.getParameter("phone1")+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
+		member.setMemberPhone(memberPhone);
 		//gender
 		String gender = "";
 		if(request.getParameter("gender").equals("man")){
@@ -39,20 +29,22 @@ public class MemberInsertAction implements Action {
 			gender="여";
 		}
 		member.setMemberGender(gender);
-
-		
-		//주소
 		member.setMemberAddr(request.getParameter("addr"));
 		
-		//비밀번호 셋팅
-		member.setMemberPw(request.getParameter("password"));
-		
-	
-		
+		//업데이트 실행
 		MemberDao memberDao = new MemberDao();
-		memberDao.mInsert(member);
+		String returnId = memberDao.mUpdate(member);
+		System.out.println(returnId+ " : returnId");
+		//세션에서 아이디값 가져오기
+		Member memberSession=(Member)request.getSession().getAttribute("mLogin");
 		
-		ActionForward forward= new ActionForward();
+		//세션의 ID값과 업데이트 할때의 ID값을 비교 후 기존세션 만료/새로운 세션 생성
+		if(memberSession.getMemberId().equals(returnId)){
+			request.getSession().invalidate();
+			request.getSession().setAttribute("mLogin", member);
+		}
+		
+		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/index.jsp");
 		

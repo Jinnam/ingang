@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:import url="/top.jsp"></c:import>
+<c:import url="WEB-INF/module/top.jsp"></c:import>
 <%
 	//회원가입
 	//response.sendRedirect(request.getContextPath()+"/member/InsertForm.me");

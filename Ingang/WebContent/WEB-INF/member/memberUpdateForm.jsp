@@ -6,9 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+
+</script>
 </head>
 <body>
-	<form id="myform" action='<c:url value="/member/InsertAction.me"/>'method="post">
+	<form id="myform" action='<c:url value="/member/memberUpdateAction.me?memberId=${member.memberId }"/>'method="post">
 		<table style="width:600px">
 				<tr>
 					<td>아이디</td><td><input id="id" type="text" name="id" value="${member.memberId }" readonly="readonly"/><span id="idHelper"></span></td>
@@ -26,13 +30,13 @@
 					<td>생년월일(ex 990101)</td><td><input id="birth" type="text" maxlength="6" name="birth" value="${member.memberBirth }"/><span id="birthHelper"></span></td>
 				</tr>
 				<tr>
-					<td>휴대전화</td><td><input id="phone1" type="text" name="phone1" maxlength="3" size="3"/>-
-										<input id="phone2" type="text" name="phone2" maxlength="4" size="4"/>-
-										<input id="phone3" type="text" name="phone3" maxlength="4" size="4"/><span id="phoneHelper"></span></td>
+					<td>휴대전화</td><td><input id="phone1" type="text" name="phone1" maxlength="3" size="3" value="${phone1}"/>-
+										<input id="phone2" type="text" name="phone2" maxlength="4" size="4" value="${phone2}"/>-
+										<input id="phone3" type="text" name="phone3" maxlength="4" size="4" value="${phone3}"/><span id="phoneHelper"></span></td>
 				</tr>
 				<tr>
-					<td>성별</td><td><input id = "gender1" type="radio" name="gender" checked="checked" value="man"/>남
-									<input id="gender2" type="radio" name="gender" value="woman"/>여</td><span id="genderHelper"></span>
+					<td>성별</td><td><input id = "gender1" type="radio" name="gender" <c:if test="${member.memberGender=='남'}">checked="checked"</c:if> value="man"/>남
+									<input id="gender2" type="radio" name="gender" <c:if test="${member.memberGender=='여'}">checked="checked"</c:if> value="woman"/>여</td><span id="genderHelper"></span>
 				</tr>
 				<tr>
 					<td>주소(시/군/구)</td><td><input id="addr" type="text" name="addr" maxlength="20" value="${member.memberAddr }"/><span id="addrHelper"></span></td>
@@ -40,10 +44,10 @@
 		</table>
 		<table>
 			<tr>
-				<td><input type="button" id="btn" value="수정"/></td>
+				<td><input type="submit" id="btn" value="수정"/></td>
 			</tr>
 		</table>
 	</form>
-		<input type="button" id="drop" value="탈퇴"/></td>
+		<input type="btn" id="drop" value="탈퇴"/></td>
 </body>
 </html>
