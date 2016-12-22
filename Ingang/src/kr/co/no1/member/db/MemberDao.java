@@ -107,10 +107,28 @@ public class MemberDao {
 			if(con!=null) try{con.close();}catch(SQLException ex){}
 		}
 		return memberId;
-	
-		
 	}
 	
+	//삭제(회원탈퇴)
+	public int mDelete(String memberId, String password){
+		int result=-1;
+		String sql = "DELETE FROM MEMBER WHERE MEMBER_ID=? AND MEMBER_PW=?";
+		try{
+			con = ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, password);
+			result = pstmt.executeUpdate();
+			System.out.println(result+ "    : result memberDao delete");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		
+		return result;
+	}
 	
 	
 	//한명 정보 가져오기

@@ -48,6 +48,6 @@
 			</tr>
 		</table>
 	</form>
-		<input type="btn" id="drop" value="Ε»Επ"/></td>
+		<a href='<c:url value="/member/DeleteForm.me"></c:url>'>ΘΈΏψΕ»Επ</a>
 </body>
 </html>

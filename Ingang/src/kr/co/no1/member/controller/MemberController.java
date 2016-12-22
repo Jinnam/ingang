@@ -81,10 +81,25 @@ public class MemberController extends HttpServlet {
 			}
 		}
 		//삭제 화면
-	/*	else if(command.equals("/login/LoginAction.me")){
-			
+		else if(command.equals("/member/DeleteForm.me")){
+			action = new MemberDeleteFormAction();
+			try{
+				forward = action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
-*/		
+		//삭제 액션
+		else if(command.equals("/member/DeletePro.me")){
+			System.out.println("/member/DeletePro.me 진입");
+			action = new MemberDeleteProAction();
+			try{
+				forward = action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
 		
 		//회원 검색 폼
 		else if(command.equals("/member/SearchForm.me")){
