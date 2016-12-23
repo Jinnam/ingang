@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<a href='<c:url value="/index.jsp"></c:url>'>★홈★</a><br/>
 	<c:if test="${mLogin == null }">
 		<a href='<c:url value="/login/Login.me"></c:url>'>로그인</a>&nbsp;&nbsp;
 		<a href='<c:url value="/member/FindIdForm.me"></c:url>'>아이디/비밀번호 찾기</a>&nbsp;&nbsp;
@@ -26,7 +26,7 @@
 		<c:if test="${mLogin.memberLevel == 'admin' }">
 			<a href='<c:url value="/member/SearchAction.me"></c:url>'>회원목록/관리</a>&nbsp;&nbsp;
 		</c:if>
-			<a href="">마이페이지</a>
+			<a href="#">마이페이지</a>
 	</c:if>
 
 

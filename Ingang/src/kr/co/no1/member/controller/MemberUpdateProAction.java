@@ -40,7 +40,7 @@ public class MemberUpdateProAction implements Action {
 		
 		//세션의 ID값과 업데이트 할때의 ID값을 비교 후 기존세션 만료/새로운 세션 생성
 		if(memberSession.getMemberId().equals(returnId)){
-			request.getSession().invalidate();
+			//request.getSession().invalidate();세션 만료 안해도 됨. 세션 덮어씀
 			request.getSession().setAttribute("mLogin", member);
 		}
 		
