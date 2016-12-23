@@ -4,12 +4,15 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import inter.Action;
 import inter.ActionForward;
+
 
 public class LectureController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,6 +34,9 @@ public class LectureController extends HttpServlet {
 		String command=RequestURI.substring(contextPath.length());
 		System.out.println(command + "<-- command");
 		System.out.println("----------LectureController.java----------------");
+		
+		//System.out.println(request.getParts().toString() + " <<<<<<<<<<<<<");
+		
 		ActionForward forward = null;
 		Action action = null;
 		
@@ -87,7 +93,7 @@ public class LectureController extends HttpServlet {
 			
 		//강의 등록
 		}else if(command.equals("/lecture/LectureInsertAction.le")){
-			System.out.println("조건문 /lecture/LectureInsertAction.le 강의추가 폼");
+			System.out.println("조건문 /lecture/LectureInsertAction.le 강의추가");
 			action = new LectureInsertAction();
 			try{
 				forward=action.execute(request, response);

@@ -225,7 +225,7 @@ public class LectureDao {
 			pstmt.setString(2, lecture.getClassCode());
 			pstmt.setString(3, lecture.getLectureName());
 			pstmt.setString(4, lecture.getLectureDetail());
-			pstmt.setString(5, "강의파일");
+			pstmt.setString(5, lecture.getLectureFile());
 			System.out.println("pstmt : "+pstmt);
 			rowCount = pstmt.executeUpdate();
 			//과정의 class_number 값+1하기
@@ -348,11 +348,14 @@ public class LectureDao {
 		int count = 0;
 		try {
 			conn = ds.getConnection();
-			pstmt = conn.prepareStatement("select count(*) from "+table+" where "+table+"_rd=?");
+			pstmt = conn.prepareStatement("select max(substr(lecture_code,9)) from "+table+" where "+table+"_rd=?");
 			pstmt.setString(1, dTime);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				count = rs.getInt(1);
+				//해당날짜에 처음등록되는거면 null 발생해서 분기시켜줌
+				if(rs.getString(1)!=null){
+					count = Integer.parseInt(rs.getString(1));
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

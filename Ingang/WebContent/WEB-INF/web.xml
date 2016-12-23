@@ -21,9 +21,19 @@
 		<display-name>LectureController</display-name>
 		<servlet-name>LectureController</servlet-name>
 		<servlet-class>kr.co.no1.lecture.controller.LectureController</servlet-class>
+		
+		<multipart-config>
+<!-- 			<location>/img</location>
+			<max-file-size>20848820</max-file-size>
+			<max-request-size>418018841</max-request-size>
+			<file-size-threshold>1048576</file-size-threshold> -->
+		</multipart-config>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>LectureController</servlet-name>
 		<url-pattern>*.le</url-pattern>
 	</servlet-mapping>
+
+	
 </web-app>
