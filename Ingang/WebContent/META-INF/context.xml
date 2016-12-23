@@ -6,7 +6,7 @@
          password="java0000"
          driverClassName="oracle.jdbc.OracleDriver"
          factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory"
-         url="jdbc:oracle:thin:@localhost:1521:XE"
+         url="jdbc:oracle:thin:@localhost:1522:XE"
          maxActive="500" 
          maxIdle="100"/>  
  </Context>

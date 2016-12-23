@@ -317,6 +317,7 @@ public class LectureDao {
 				
 			default : break;
 		}
+		
 		//현재날짜를 가져와서 원하는 포멧으로 바꾸꿈
 		SimpleDateFormat formatter = new SimpleDateFormat("yyMMdd");
 		Date currentTime = new Date();

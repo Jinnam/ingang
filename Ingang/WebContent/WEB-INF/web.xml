@@ -20,7 +20,7 @@
 		</description>
 		<display-name>LectureController</display-name>
 		<servlet-name>LectureController</servlet-name>
-		<servlet-class>kr.co.no1.LectureController.LectureController</servlet-class>
+		<servlet-class>kr.co.no1.lecture.controller.LectureController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LectureController</servlet-name>

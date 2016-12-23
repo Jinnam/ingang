@@ -1,4 +1,4 @@
-package kr.co.no1.LectureController;
+package kr.co.no1.lecture.controller;
 
 import java.util.List;
 
