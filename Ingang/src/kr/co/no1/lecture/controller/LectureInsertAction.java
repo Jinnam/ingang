@@ -79,6 +79,8 @@ public class LectureInsertAction implements Action {
 				break;
 			case "gif" :
 				ext = ".gif";
+			case "mp4a" :
+				ext = ".mp4";
 			default : break;
 		}
 		part.write(dir+"/"+filename+ext);
@@ -89,7 +91,7 @@ public class LectureInsertAction implements Action {
 		LectureDao lectureDao = new LectureDao();
 		int rowCount = lectureDao.lectureInsert(lecture);
 		if(rowCount != 0){
-			System.out.println("강의 등록 성공^^");
+			System.out.println("강의 등록	 성공^^");
 		}else {
 			System.out.println("강의 등록 실패 ..ㅠㅠ");
 		}

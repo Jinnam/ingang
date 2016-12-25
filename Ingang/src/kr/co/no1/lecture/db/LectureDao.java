@@ -86,7 +86,7 @@ public class LectureDao {
 		System.out.println("lectureList1 : " + lectureList);
 		try {
 			conn = ds.getConnection();
-			pstmt = conn.prepareStatement("select * from lecture where class_code=?");
+			pstmt = conn.prepareStatement("select lecture_code,class_code,lecture_name,lecture_detail,lecture_file,to_char(lecture_rd,'yy/mm/dd') as lecture_rd from lecture where class_code=?");
 			pstmt.setString(1, classCode);
 			rs = pstmt.executeQuery();
 			Lecture le = null;

@@ -21,6 +21,9 @@ public class LectureLecListAction implements Action {
 		System.out.println("key : "+key);
 		System.out.println("classCode : "+classCode);
 		ActionForward forward = new ActionForward();
+		String dir = request.getServletContext().getRealPath("/img/");
+		request.setAttribute("dir", dir);
+		
 		if(key.equals("cc")){
 			LectureDao lectureDao = new LectureDao();
 			List<Lecture> list = lectureDao.oneClassLectures(classCode);

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -12,6 +12,7 @@
 	<h3>과정명 : ${classes.className}</h3><h5> 강사 : ${classes.instructor.instructorName}</h5>
 
 <button onclick="location.href='<c:url value='/lecture/LectureInsertFormAction.le?classCode=${classes.classCode}'/>'">강의등록</button>
+${dir}
 <table border='1'>
 	<tr>
 		<th>강의코드</th>
@@ -27,7 +28,11 @@
 			<td>${lec.classes.className}</td>
 			<td>${lec.lectureName}</td>
 			<td>${lec.lectureDetail}</td>
-			<td>${lec.lectureFile}</td>
+			<td>
+				<video width="320" height="240" controls>
+						<source src="${dir}\bm.mp4" type="video/mp4">
+					</video>
+				</td>
 			<td>${lec.lectureRd}</td>
 		</tr>
 	</c:forEach>
