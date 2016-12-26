@@ -29,9 +29,11 @@ ${dir}
 			<td>${lec.lectureName}</td>
 			<td>${lec.lectureDetail}</td>
 			<td>
+			
+			<a href="<c:url value='/WEB-INF/lecture/videoView.jsp' />">동영상 보기</a>
 				<video width="320" height="240" controls>
 						<source src="../video/${lec.lectureFile}" type="video/mp4">
-					</video>
+				</video>
 				</td>
 			<td>${lec.lectureRd}</td>
 		</tr>
