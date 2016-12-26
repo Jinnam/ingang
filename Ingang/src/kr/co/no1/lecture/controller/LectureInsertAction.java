@@ -36,7 +36,7 @@ public class LectureInsertAction implements Action {
 		System.out.println("part : "+part);
 		InputStream inputStream = part.getInputStream();
 		
-		String dir = request.getServletContext().getRealPath("/img/");
+		String dir = request.getServletContext().getRealPath("/video");
 		System.out.println("dir:"+dir);
         String filename = UUID.randomUUID().toString().replace("-", "");
 		String fileType = "";

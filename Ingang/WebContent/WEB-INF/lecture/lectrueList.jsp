@@ -30,7 +30,7 @@ ${dir}
 			<td>${lec.lectureDetail}</td>
 			<td>
 				<video width="320" height="240" controls>
-						<source src="${dir}\bm.mp4" type="video/mp4">
+						<source src="../video/${lec.lectureFile}" type="video/mp4">
 					</video>
 				</td>
 			<td>${lec.lectureRd}</td>
